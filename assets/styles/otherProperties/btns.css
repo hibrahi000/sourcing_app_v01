@@ -1,0 +1,272 @@
+
+
+        #btnNext {
+            float: right;
+            margin-right: 8%;
+            margin-top: 1%;
+            margin-bottom: 0%;
+            border-radius: 500px;
+            background-color: #3378B9;
+            border: none;
+            color: #ffffff;
+            text-align: center;
+            font-size: 20px;
+            width: 150px;
+            transition: all 0.5s;
+            cursor: pointer;
+            outline: none
+
+        }
+        #btnNext span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.4s;
+        }
+        #btnNext span:after {
+            font-family: "Font Awesome 5 Free";
+            content: "\f35a";
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        #btnNext:hover span {
+            padding-right: 25px;
+        }
+        #btnNext:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+        #btnNext:focus {outline:0;}
+
+
+
+
+
+        #btnPrev {
+            margin-right: 8%;
+            margin-top: 1%;
+            margin-bottom: 0%;
+            border-radius: 500px;
+            background-color: #3378B9;
+            border: none;
+            color: #ffffff;
+            text-align: center;
+            font-size: 20px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+
+        }
+        #btnPrev span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.4s;
+        }
+        #btnPrev span:before {
+            font-family: "Font Awesome 5 Free";
+            content: "\f359";
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            left: -20px;
+            transition: 0.5s;
+        }
+        #btnPrev:hover span {
+            padding-left: 25px;
+        }
+        #btnPrev:hover span:before {
+            opacity: 1;
+            left: 0;
+        }
+        #btnPrev:focus {outline:0;}
+
+
+
+
+        .proceedBtn {
+            float: right;
+            margin-right: 8%;
+            margin-top: 1%;
+            margin-bottom: 0%;
+            border-radius: 500px;
+            border-style: outset 2px;
+            border-color: black;
+            
+            background-color: #CBF0F8;
+            border: none;
+            color: #000000;
+            text-align: center;
+            font-size: 20px;
+            width: 150px;
+            transition: all 0.5s;
+            cursor: pointer;
+
+        }
+        .proceedBtn span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.4s;
+        }
+        .proceedBtn span:after {
+            content: '#x21EA';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.2s;
+        }
+        .proceedBtn:hover span {
+            padding-right: 45px;
+        }
+        .proceedBtn:hover span:after {
+            /* opacity: 1; */
+            right: 0;
+        }
+        .proceedBtn:focus {outline:0;}
+
+
+
+
+
+        #saveBtn {
+            float: right;
+            margin-right: 8%;
+            margin-top: 3%;
+            margin-bottom: 0%;
+            border-radius: 500px;
+            background-color: #3378B9;
+            border: none;
+            color: #ffffff;
+            text-align: center;
+            font-size: 20px;
+            width: 150px;
+            transition: all 0.5s;
+            cursor: pointer;
+
+        }
+        #saveBtn span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.4s;
+        }
+        #saveBtn span:after {
+            content: '\21E2';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        #saveBtn:hover span {
+            padding-right: 25px;
+        }
+        #saveBtn:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+        
+        #saveBtn:focus {outline:0;}
+
+
+
+
+
+    .submit{
+        border-style: none;
+        border-color: black;
+        margin-top: 2%;
+        padding-bottom: 2%;
+    }
+        #formComplete {
+            float: right;
+            margin-right: 8%;
+            margin-top: 1%;
+            margin-bottom: 0%;
+            border-radius: 500px;
+            background-color: #7bc659;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 20px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            
+        }
+        #formComplete span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.4s;
+        }
+        #formComplete span:after {
+            content: '>>';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+        #formComplete:hover span {
+            padding-right: 25px;
+            
+
+        }
+        #formComplete:hover span:after {
+            opacity: 1;
+            right: 0;
+        }
+
+
+        #homeBtn{
+           float: left;
+           margin-top: 15%;
+           margin-left: 10%;
+          
+        
+           font-size: 25px; /* Set a font size */
+           cursor: pointer; /* Mouse pointer on hover */
+        }
+
+
+
+
+        #btnEdit{
+            border-radius: 20px;
+            background-color: #7bc659;
+            width: 150px;
+            outline: none;
+            font-size: 18px;
+            color: white;
+            text-align: center;
+            padding-right: 35px;
+            margin-left: 4%;
+            margin-top: 0;
+        }
+        
+         #btnEdit span:before {
+            font-family: "Font Awesome 5 Free";
+            content: "\f044";
+            vertical-align: middle;
+            font-weight: 900;
+            opacity: 0;
+            top: 0;
+            transition: 0.5s;
+            padding-right: 8px;
+        
+        }
+        #btnEdit:hover span {
+            
+
+        }
+        #btnEdit:hover span:before {
+            opacity: 1;
+            
+        }
+        #btnEdit:focus {outline:0;}

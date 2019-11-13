@@ -1,0 +1,253 @@
+<!doctype html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+
+        <title>Sourcing Invoice Form</title>
+
+
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+       
+         <link rel="stylesheet"  charset=utf-8 type="text/css" href="/styles/otherProperties/btns.css"> 
+
+         <link rel="stylesheet"  charset=utf-8 type="text/css" href="/styles/otherProperties/checkBoxes.css">
+
+        <link rel="stylesheet"  charset=utf-8 type="text/css" href="/styles/otherProperties/topLevel.css">
+         
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+         <link rel="stylesheet"  charset=utf-8 type="text/css" href="/styles/vendStyle.css">
+       
+        
+
+    </head>  
+    
+    <body >
+
+
+        <% include ../partials/mainHeader.ejs%>
+
+        
+        <div id="formLoc">
+            <form id="msform" method="POST" action="/CorporationA_Invoice_Form"> 
+                <input type="text" name="tok" class="noShow" value= '<%= tok%>' readonly>
+                <input type="text" name="vendorName" class="noShow" value= '<%= vendorName%>' readonly>
+                <input type="text" name="newMaterial" class="noShow" value = '<%= qs.newMaterial%>' readonly>
+                <input type="text" class="noShow" name="category" value="<%=qs.category%>" readOnly>
+               
+                <fieldset>
+                    <div id="materialSection">
+                    <h5 id="title" class="fs-title">Material: </h5>
+                    <input type="text" value='<%=qs.material%>' name="material" id="material" readonly class="labelMat">
+                    </div>
+                    <div class="fillout">
+                        
+                        <div id="abhReq" class="form-group">
+                            <h5 class="form-label" id="reqLabel">CorporationA Requested:</h5>
+                            <input type="text" value='<%=qs.abhRequest%>'name="abhRequest" id="abhReq" class="labelReq" readonly> 
+                            
+                        </div>
+
+                            <div id="moq" class="form-group">
+                                <label for="itemCode" id="itemCodelbl" class="form-label" ><en>Vendor Item Code</en></label>
+
+                                <input type="text" class="form-control" name="itemCode" id="itemCode"  placeholder="CODE#" > 
+                            </div>
+
+                            <div id="measurements" class="form-group">
+
+                                    <label for="amount" id="amountLbl" class="form-label" ><en>Minimum Order Quantity</en></label>
+
+                                    <div class="input-group">
+                                        <input name="amount" id="amount" type="number" min="0"   class="form-control" aria-label="Text input with dropdown button" placeholder="Ex: 32 ** REQUIRED **" required>
+                                        <div class="input-group-append">
+                                            <select name="measurement" id="unit" class="input-group-text" 
+                                            
+                                            id="measurement" 
+                                            
+                                            
+                                            placeholder = "Units" required>
+                                                <option value="kg">Kilograms</option>
+                                                <option value="lb">Pounds</option>
+                                                </select>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div>
+                                        <label for="Price" id="PriceLbl" class="form-label" ><en>Price</en></label>
+
+                                </div>
+
+                            <div id="Price" class="input-group" >
+                                
+                                <input id="Price" type="number" min="0"  class="form-control" aria-label="Amount (to the nearest dollar)" id="priceIn"  
+                                name="priceIn" placeholder="$(USD) ** REQUIRED **" required>
+                                
+                                <div class="input-group-append">
+                                        <select name="priceType" 
+                                            class="input-group-text" 
+                                            id="priceType" 
+                                            required>
+                                                <option value="Delivered Price">Delivered Price</option>
+                                                <option value="Pick Up Needed">Pick Up Needed</option>
+                                            </select>
+                                    </div>
+                            </div>
+
+                            <div id="inStock" class="form-group" class="glowing">
+                                    <label for="checkboxArea" id="rushOrderLbl" class="form-label" ><en> Do You Have It In Stock (USA)?</en></label>
+                                    <p id='checkboxlook' class="onoff"><input type="checkbox" name="inStock" id="checkboxID" checked><label for="checkboxID"></label></p>  
+                                            
+                                </div>
+        
+                            <div id="dateSelect" class="form-group">
+                                    <label for="dateIn" id="caseNo">If No then when will you have it available?</label>
+                                    <input name="dateInStock" type="date" id="dateIn"  class="form-group">
+                            </div>
+
+                          
+                            
+                    </div>
+
+
+                    <div id="nxtBtn">
+                        <button type="button" id="btnNext" name="next" class="next action-button"  ><span>Next</span></button>
+                    </div>
+
+
+
+                </fieldset>
+
+                <fieldset>
+                    <h5 id="title" class="fs-title">Payment & Shipping</h5>
+
+                    <div class="fillout">
+
+                        <div id="pType" class="form-group">
+                            <label>Payment Type</label>
+                            <!-- CHECK THIS -->
+                            <select name="payType" id="payType">
+                                <option value="advancePay" class="input-group-text">Advance Payment Before Shipping</option>
+                                <option value="terms">Terms</option>
+                              
+                            </select>
+                        </div>
+
+                        <div id="terms" class="form-group">
+                            <label>Pick your payment terms</label>
+                            <select name="payTerms" id="pTerms">
+                                <option value="n/a">--Days</option>
+                                <option value="30"> 30 Days</option>
+                                <option value="60">60 Days</option>
+                                <option value="90">90 Days</option>
+                            </select>
+                        </div>
+
+                        <div  id="shipdateSelect" class="form-group">
+                                <label>Estimated Shipping Date</label>
+                                <input name="shippingDate" type="date" id="dateIn" class="form-group" >
+                        </div>
+
+
+                    </div>
+
+                    
+
+
+
+
+
+
+
+
+
+                    <div class="nav">
+                        <button type="button" id="btnPrev" name="previous" class="previous action-button" ><span>Previous</span></button>
+                    </div>
+
+                    <div class='nav' id="nxtBtn">
+                        <button type="button" id="btnNext" name="next" class="next action-button"  ><span>Next</span></button>
+                    </div>
+                </fieldset>
+
+                <fieldset>
+                    <h5 id="title" class="fs-title">Shipping Information</h5>
+                    <div class="fillout">
+
+                        <div class="form-group">
+                                <label for="compNam" id="compNamLbl" class="form-label" ><en>Shipping Company Name</en></label>
+
+                                <input type="text" name="shipCompName" class="form-group" id="compNam" value="<%=qs.shipCompName%>"  placeholder="Ex: 2Bros Shipping LLC" > 
+                         </div>
+
+                         <div id="shipAddress" class="form-group">
+                            
+
+                                 <div class="row one">
+                                    <div class="address-one">
+                                        <label class='addLabel' for="address-one">Address Line 1</label>
+                                        <input class='addInput' value="<%=qs.shipAddress1%>" name="shipAddress1" placeholder="" id="address-one" type="text" />
+                                    </div>
+                                    <div class="address-two">
+                                        <label class='addLabel' for="address-two">Address Line 2</label>
+                                        <input class='addInput' name='shipAddress2' class="form-group" value="<%=qs.shipAddress2%>" id="address-two" type="text" />
+                                    </div>
+                                </div>
+                                <div class="row two">
+                                    <div class="city">
+                                        <label class='addLabel' for="city">City</label>
+                                        <input class='addInput' value="<%=qs.shipCity%>" name="shipCity" placeholder="" id="city" type="text" />
+                                    </div>
+                                    <div class="state">
+                                        <label class='addLabel' for="state">State / Province / Region</label>
+                                        <input class='addInput' value="<%=qs.shipState%>" name="shipState" placeholder="" id="state" type="text" />
+                                    </div>
+                                </div>
+                                <div class="row three">
+                                    <div class="zip">
+                                        <label class='addLabel' for="zip">Zip / Postal Code</label>
+                                        <input class='addInput' name="shipZip"  value='<%=qs.shipZip%>' placeholder="" id="zip" type="number"min="0" max="99999"  />
+                                    </div>
+                                    <div class="country">
+                                        <label class='addLabel' for="country">Country</label>
+                                        <input class='addInput' name="shipCountry" value='<%=qs.shipCountry%>'  id="country" type="text" />
+                                    </div>
+                                </div>
+                                <div class="row four">
+                                        
+                                      
+                                 </div>
+                                 <div id="extraNotes">
+                                    <input name="notes" type="text" class='noteSec' placeholder="Any Notes you want to leave us?"></input>
+                                </div>
+                            </div>
+                    </div>
+                                 
+                    <div class="submit">
+                        <button type="button" id="btnPrev" name="previous" class="previous action-button" ><span>Previous</span></button>
+                        <button type="submit" id="formComplete"><span>Submit Quote </span></button>
+                    </div>
+                </fieldset>
+
+
+            </form>       
+        </div>
+                
+
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+        <script src="/scripts/vendorScript.js"></script>
+
+    </body>
+
+
+
+</html>

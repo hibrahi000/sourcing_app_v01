@@ -1,0 +1,13 @@
+*,*::before, *::after{box-sizing: border-box;}
+
+.imageLimiter{
+  height: 100%;
+  width: 100%;
+}
+
+img{
+    max-width: 62%;
+    margin-left: 18%;
+    margin-right: 10%;
+    margin-top: 4%;
+}

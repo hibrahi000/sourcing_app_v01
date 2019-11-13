@@ -1,0 +1,130 @@
+
+  
+  a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+  }
+  
+  .side-nav {
+    visibility: visible;
+      float:left;
+  
+    width: 250px !important;
+    height: 450px;
+    text-align: center;
+    overflow: hidden;
+    z-index: 1;
+    position: relative;
+    top: 0;
+    left: -300px;
+    transition: left .5s ease;
+    margin-top: 12%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 18px;
+  
+  }
+  
+  .side-nav .sections {
+    margin: 0;
+    padding-left: 0;
+    padding-top: 65px;
+  }
+  
+  .side-nav .sections li {
+    width: 220px;
+    display: block;
+    margin: 0 auto;
+    padding-top: 28px;
+    padding-bottom: 30px;
+    font-size: 25px;
+    color: #172936;
+    transition: color .5s ease;
+  }
+  
+  .side-nav .sections a:hover:before {
+    width: 100%;
+  }
+  
+  .side-nav .sections li:hover {
+    cursor: pointer;
+    color: rgb(76, 192, 238);
+  }
+  
+  
+  .menu-icon {
+  
+    height: 24px;
+    width: 40px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    margin-left: 2%;
+    margin-top: 12%;
+  }
+  
+  .menu-icon:hover {
+    cursor: pointer;
+    /* transform: rotate(90deg); */
+    transform: rotatex(50deg);
+    transition: .4s ease; 
+  }
+  
+  .menu-icon > div {
+    width: 100%;
+    height: 4px;
+    background-color: black;
+    margin-bottom: 6px;
+    transition: all .4s ease;
+  }
+  
+  .menu-icon .bar3 {
+    margin-bottom: 0;
+  }
+  
+  .x-bar {
+    visibility: visible;
+    position: absolute;
+    top: -30px;
+    left: 270px;
+    width: 30px;
+    height: 30px;
+    display: block;
+    transition: top .5s ease;
+    transform-origin: rotate(0);
+  }
+  
+  .x-bar:hover {
+    cursor: pointer;
+    transform: rotateX(50deg);
+    transition: .4s ease;
+  }
+  
+  .x-bar > div {
+    background-color:#a12626;
+    width: 100%;
+    height: 4px;
+    margin-bottom: 6px;
+    transition: .3s ease;
+   
+  }
+  
+  .x-bar .side-bar1 {
+    -webkit-transform: rotate(-45deg)translate(-8px, 7px);
+    -moz-transform: rotate(-45deg)translate(-8px, 7px);
+    -o-transform: rotate(-45deg)translate(-8px, 7px);
+    -ms-transform: rotate(-45deg)translate(-8px, 7px);
+    transform: rotate(-45deg)translate(-8px, 7px);
+  }
+  
+  .x-bar .side-bar2 {
+    -webkit-transform: rotate(45deg) translate(1px, 0px);
+    -moz-transform: rotate(45deg) translate(1px, 0px);
+    -o-transform: rotate(45deg) translate(1px, 0px);
+    -ms-transform: rotate(45deg) translate(1px, 0px);
+    transform: rotate(45deg) translate(1px, 0px);
+  }
+  
+    
+  
+  
+  

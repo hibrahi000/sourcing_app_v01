@@ -1,0 +1,207 @@
+<% if(admin == 'dashboard') { %>
+      <form id="msform">
+    <div class="welcome_page">
+        <h1 id="loginHeader">Welcome Admin</h1>
+        <div class= 'flashAlerts'><p><%include ../messages.ejs %></p></
+      </div>
+
+    </form>
+  <%}%>
+
+
+
+<% if(admin == 'addUser') { %>
+    <form id="msform" method="POST" action="/ABH_ADMIN/Dashboard/addUser" >
+        <fieldset>
+                <h1 class="sectionName"><em>Add user</em> <br><br> </h1>  
+                <p id="flashAlert"><%include ../messages.ejs %></p>
+                <h1 id="title" class="fs-title">User Info</h2>
+             
+                <input 
+                type="name" 
+                class="inputField" 
+                id="firstName" 
+                name="firstName" 
+                placeholder="User First Name" 
+                value="<%=lastName%>"
+
+                required
+                />
+                
+            
+                <input 
+                type="name" 
+                class="inputField" 
+                id="lastName" 
+                name="lastName" 
+                placeholder="User Last Name" 
+                value="<%=lastName%>"
+                required
+                />
+                
+                <input 
+                type="name" 
+                class="inputField" 
+                id="user_name" 
+                name="user_name" 
+                placeholder="Username" 
+                value="<%= user_name%>"
+                required
+                />
+
+                <input 
+                type="email" 
+                class="inputField" 
+                id="Email" 
+                name="Email" 
+                placeholder="User Email: your@email.com" 
+                value="<%= Email %>"
+               
+                required
+                />
+                  
+                <input 
+                type="text" 
+                class="inputField" 
+                id="department" 
+                name="department" 
+                placeholder="Department You Work In"
+                value="<%= department %>"
+                required
+                />
+
+
+                <input 
+                type="text" 
+                class="inputField" 
+                id="cellNumber" 
+                name="cell" 
+                placeholder="Cell Phone Number"
+                value="<%= cell %>"
+                min="0"
+                required
+                />
+
+               
+                <div id="nxtBtn">
+                <button type="submit"  name="next" id="formComplete"  ><span>Add User</span></button>
+                </div>
+
+              </fieldset> 
+            </form>
+<%}%>
+
+
+<% if(admin == 'userPassword') { %>
+    <form id="msform" method="POST" action="/ABH_ADMIN/PassAdded" >
+        <fieldset>
+                <h1 class="sectionName"><em>Create Password</em> <br><br> </h1>  
+                
+                <h1 id="title" class="fs-title">User Info</h2>
+                    
+
+                    
+                    <input 
+                    type="name" 
+                    class="inputField" 
+                    id="user_name" 
+                    name="user_name"                     
+                    value="<%=user_name%>"
+                    readonly
+                    />
+
+
+                    <input 
+                    type="password" 
+                    class="inputField" 
+                    id="password1" 
+                    name="password1" 
+                    placeholder="Enter a password"
+                    value="<%=typeof password != 'undefined' ? password1:''%>"
+                    required 
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" 
+                    onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Your password must be at least 6 characters as well as contain at least one uppercase, one lowercase, and one number' : ''); if(this.checkValidity()) form.password2.pattern = this.value;"
+
+                    />
+                    <input 
+                    type="password" 
+                    class="inputField" 
+                    id="password2" 
+                    name="password2" 
+                    placeholder="reEnter your password"
+                    value="<%=typeof password != 'undefined' ? password2:''%>"
+                    required
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                    onchange="this.setCustomValidity(this.validity.patternMismatch ? 'Please enter the same Password as above' : '');"
+                    />
+
+                
+                    <div id="nxtBtn">
+                        <button type="submit"  name="next" id="formComplete"  ><span>Save Password</span></button>
+                    </div>
+
+
+
+          </fieldset>     
+    </form>
+    <%}%>
+
+
+<% if(admin == 'removeUser') { %>
+    <form id="msform" method="POST" action="/ABH_ADMIN/Dashboard/removeUser">
+        <fieldset>   
+            <h1 class="sectionName"><em>Remove User</em> <br><br> </h1>
+            <div class= 'flashAlerts'><p><%include ../messages.ejs %></p></div>
+                  
+                  
+                      
+                  
+                    <h1 id="title" class="fs-title">User Info</h2>
+              
+                  
+                  <input type="text" class="inputField" id="user_name" name="username" placeholder="User Name" required/>
+                  
+                  <input type="password" class="inputField" id="password1" name="password1" placeholder="Enter a password"/>
+              
+                  
+              
+              
+                  <div id="nxtBtn">
+                  <button type="submit"  name="next" id="formComplete"  ><span>REMOVE USER</span></button>
+                  </div>
+              
+              </fieldset>
+         
+      </form>
+<%}%>
+
+
+<% if(admin == 'removeVendor') { %>
+  <form id="msform" method="POST" action="/ABH_ADMIN/Dashboard/removeVendor">
+      <fieldset>   
+          <h1 class="sectionName"><em>Erase Vendor</em> <br><br> </h1>
+          <div class= 'flashAlerts'><p><%include ../messages.ejs %></p></div>
+                
+                
+                    
+                
+                  <h1 id="title" class="fs-title">Vendor Info</h2>
+            
+                
+                <input type="text" class="inputField" id="vendor_name" name="vendorName" list='vendList' placeholder="Vendor Name" required/>
+                <datalist id="vendList">
+                    <% for(let i =0; i < vendors.length; i++){ %>
+                            <option value= "<%- vendors[i] %>" > 
+                       
+                    <% } %>
+            </datalist>
+
+
+                <div id="nxtBtn">
+                <button type="submit"  name="next" id="formComplete"  ><span>Erase  </span></button>
+                </div>
+            
+            </fieldset>
+       
+    </form>
+<%}%>

@@ -1,0 +1,166 @@
+*,*::before, *::after{box-sizing: border-box;}
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+body{
+   
+    background-image: url('https://res.cloudinary.com/dqnylbrs2/image/upload/v1553004797/abh-background1.jpg');
+    background-position: center right;
+    font-size: 1rem;
+    zoom: 100%;
+    overflow-anchor: auto;    
+}
+
+
+#welcome_logo_img{
+    float: right;
+    border-radius: 3px;
+    box-shadow: 0 0 15px 1px rgba(170, 164, 164, 0.863);
+}
+
+
+
+
+
+#unit{
+    font-size: 16px;
+}
+
+.input-group-text{
+    height: 38px;
+}
+
+
+
+.flashAlerts{
+   float: left !important;
+   width: 100%;
+   
+}
+
+#flashAlerts{
+    float: unset;
+    width: 100%;
+    z-index: 4;
+    display: hidden;
+}
+
+
+
+
+/* Request Form Design */
+
+.inputField{
+    background-color: white;
+}
+
+.sectionName{
+    text-align: right;
+    font-size: 35px;
+    color: white;
+}
+    #formLoc{
+        margin-top: 10%;
+       
+    }
+
+#title{
+    margin-bottom: 30px;
+    font-size: 20px;
+    color: white;
+}
+    #msform {
+        width: 50%;
+        margin-top: 40% auto;
+        margin-left: 25%;
+        height: 50px ;
+        text-align: center;
+        position: relative;
+        
+    }
+    #msform fieldset {
+        background-color: rgb(22, 41, 56);
+        background-repeat: no-repeat;
+        background-position: center;
+        border: 0 none;
+        border-radius: 20px;
+        box-shadow: 0 0 15px 1px rgba(170, 164, 164, 0.863);
+        padding: 20px 30px;
+        box-sizing: border-box;
+        width: 80%;
+        margin: 0 10%;
+        
+        /*stacking fieldsets above each other*/
+        position: relative;
+    }
+    /*Hide all except first fieldset*/
+    #msform fieldset:not(:first-of-type) {
+        display: none;
+    }
+    /*inputs*/
+    #msform input, #msform textarea {
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        width: 70%;
+        box-sizing: border-box;
+        font-family: montserrat;
+        color: #2C3E50;
+        font-size: 18px;
+        float: initial;
+    }
+    #msform #loginUsername ,#msform #loginPassword  {
+        background-color: #1B2125;
+        padding: 15px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        margin-bottom: 10px;
+        width: 70%;
+        box-sizing: border-box;
+        font-family: montserrat;
+        color: #0DB8DE;
+        font-size: 18px;
+        float: initial;
+    }
+
+
+  
+    #msform .action-button:hover, #msform .action-button:focus {
+        box-shadow: 0 0 0 2px white, 0 0 0 3px #7bc659;
+
+    }
+    /*headings*/
+    .fs-title {
+        font-size: 15px;
+        text-transform: uppercase;
+        color: #2C3E50;
+        margin-bottom: 10px;
+    }
+    .fs-subtitle {
+        font-weight: normal;
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 20px;
+    }
+
+
+
+    .form-label{
+        color: white;
+        font-size: 18px;
+        text-align: left;
+        margin-left: 0;
+    }
+
+
+    #rushOrder{
+        color: white;
+        font-size:18px;
+        text-align: left;
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+
+
+   
+

@@ -1,0 +1,488 @@
+<% if(purchase == 'reqQuote') { %>
+        <form id="msform" method="POST" action="/Category_Request" >
+                <% include ../messages.ejs%>
+                <fieldset>
+
+                <h1 id="sectionName"><em>Request Quote</em> <br><br> </h1>
+
+                <h1 class="title" class="fs-title">Category</h1>
+                <input type="text" class="inputField" name="category" placeholder="Alpha...." / required pattern="^[^,]\S+[^,]$" title="Make Sure there are no Spaces after the commas and if there are spaces inside the material separate by using hyphens ex Alpha-GPC-50% And No commas at the beginning or end of the list" list="catList">
+                <datalist id="catList">
+                        <% for(let i =0; i < categories.length; i++){ %>
+                                <option value= "<%- categories[i].Category %>" >
+                        <% } %>
+                </datalist>
+
+
+                <div class="checkLoc" class="form-group" class="glowing">
+                        <label for="checkboxArea" id="rushOrderLbl" class="form-label" ><en> Is this request for everyone in this Category?</en></label>
+                        <p id='checkboxlook' class="onoff"><input type="checkbox" name="masCat" id="checkboxID" ><label for="checkboxID"></label></p>
+                </div>
+                <div id="nxtBtn">
+                <button type="submit" id="btnNext"  class="next action-button"  ><span>Next</span></button>
+                </div>
+
+                </fieldset>
+
+        </form>
+<%}%>
+
+
+
+<% if(purchase === 'materialSelect') { %>
+        <form id="msform" method="POST" action="/Material_Request" >
+                <% include ../messages.ejs%>
+                <fieldset>
+
+                <h1 id="sectionName"><em>Request Quote</em> <br><br> </h1>
+                <input type="text" name="masCat" value="<%=masCat%>" class="noShow" readonly>
+                <h1 class="title" class="fs-title">Category</h1>
+                <input type="text" class="inputField" name="category" value="<%= category %>" readonly />
+
+                <h1 class="title" class="fs-title">Material</h2>
+                <input type="text" class="inputField" name="material" placeholder="Alpha...." / required  title="Make Sure there are no Spaces after the commas and if there are spaces inside the material separate by using hyphens ex Alpha-GPC-50% And No commas at the beginning or end of the list" list="matList">
+
+                <datalist id="matList">
+                        <%for(let i=0; i< matList.length; i++){%>
+                                <option value="<%= matList[i].MaterialName %>"></option>
+                        <%}%>
+                </datalist>
+                <%if(masCat !== 'on'){  %>
+                <div class="checkLoc" class="form-group" class="glowing">
+                        <label for="checkboxArea" id="rushOrderLbl" class="form-label" ><en> Is This A New Material?</en></label>
+                        <p id='checkboxlook' class="onoff"><input type="checkbox" name="newMat" id="checkboxID" ><label for="checkboxID"></label></p>
+                </div>
+                <% } %>
+
+                <div id="nxtBtn">
+                <button type="submit" id="btnNext"  class="next action-button"  ><span>Next</span></button>
+                </div>
+
+                </fieldset>
+
+        </form>
+<%} %>
+
+
+
+<% if(purchase == 'submitReq') { %>
+        <form id="msform" method="POST" action="/Purchase_Request" >
+                <fieldset>
+                        <input type="text" name="vendorList" class="noShow" value="<%=vendorList%>" readOnly>
+                        <h1 id="sectionName" ><em>Request Details</em></h1>
+                        <div class="infoBar">
+                                <div>
+                                        <input type="text" name="category" class="noShow" value="<%=category%>">
+
+                                        <label class="reqTitle">Material :</label>
+                                        <input class="inputLabel" type='text' name='material' value='<%=material%>' readonly>
+                                </div>
+                                <div>
+                                        <label class="reqTitle">New Material:</label>
+                                        <input class='inputLabel' type = 'text' name='newMat' value = '<%=newMaterial%>' readOnly>
+                                </div>
+                        </div>
+                        <div class="fillout">
+
+                                <div id="moq" class="form-group">
+                                        <label for="oqIn" id="moqInLbl" class="form-label" ><en>Order Quantity</en></label>
+
+                                        <div class="input-group-append">
+                                                <select id="reqType" class="input-group-text" name="reqType"  placeholder="Request Type" required>
+                                                <option value="One Time">One Time</option>
+                                                <option value="Monthly">Monthly</option>
+                                                <option value="Yearly">Yearly</option>
+                                                </select>
+                                        </div>
+                                </div>
+
+                                <div id="measurement" class="form-group">
+
+                                        <label for="amount" id="amountLbl" class="form-label" ><en>Requested Material Amount</en></label>
+
+
+                                        <input name="amount" id="amount" type="number" min="0"  class="form-control" aria-label="Text input with dropdown button" placeholder="Ex: 32" required>
+
+
+                                </div>
+
+                                <div id=measure class="form-group">
+                                                <label class='form-label'><en>Measurements</en></label>
+                                                <div class="input-group-append">
+                                                        <select name="units" id="unit" class="input-group-text" placeholder = "Units" required>
+                                                                <option value="Kilograms">Kilograms</option>
+                                                                <option value="Pounds">Pounds</option>
+                                                        </select>
+                                                </div>
+                                </div>
+
+
+                                <div>
+                                        <label for="tPrice" id="tPriceLbl" class="form-label" ><en>Target Price USD</en></label>
+
+                                </div>
+
+                                <div id="tPrice" class="input-group">
+
+                                        <input name="price" id="tPrice" type="number" min="0"  class="form-control" aria-label="Amount (to the nearest dollar)" id="priceIn" placeholder="(Optional)">
+
+
+
+
+                                </div>
+
+                                <div id="rushOrder" class="glowing">
+                                        <!-- <label for="checkboxArea" id="rushOrderLbl" class="form-label" ><en>Rush Order?</en></label> -->
+                                        <label>
+                                        <input name="rushOrder" type="checkbox" id="checkBoxNot"><span id="rushSpan">Rush Order</span>
+                                        </label>
+
+                                </div>
+                                <div>
+                                        <h3 class="form-label" >Notes:</h3>
+                                </div>
+                                <div id="extraNotes">
+                                        <input name="notes" type="text" class="notes" class='form-control' placeholder="Extra Notes you want to leave the vendor"></input>
+                                </div>
+
+                        </div>
+                         <div class="submit">
+
+                        <button onclick="window.location.href='/CorporationA_Purchase/Dashboard'" id="btnPrev"  ><span>Back</span></button>
+                        <button type="submit" id="formComplete"><span>Form Completed </span></button>
+
+                        </div>
+                </fieldset>
+        </form>
+<%} %>
+
+
+
+<% if(purchase == 'addVend') { %>
+        <form id="msform" method="POST" action="/Add_Vendor" >
+                <fieldset>
+
+                        <h1 id="sectionName"><em>Add Vendor</em> <br><br> </h1>
+                        <% include ../messages.ejs%>
+                        <h1 class="title" class="fs-title">Contact Info</h2>
+
+                        <input type="text" class="inputField" id="vendNamIn" name="vendNam" placeholder="Vendor Name" / required>
+
+                        <input type="text" class="inputField" id="repNameIn" name="repName" placeholder="Rep Name" / >
+
+                        <input type="text" class="inputField" id="websiteIn" name="website" placeholder="Company website" />
+
+
+                        <input type="email" class="inputField" id="vendEmailIn" name="vendEmail" placeholder="Vendor Email"  required/>
+                        
+                        <input type="text" class="inputField" id="vendCCIn" name="vendEmailCC" placeholder="Vendor Email CC SEPARATE BY COMMAS"  pattern="^[^,]\S+[^,]$" title="Please do not add spaces in between emails , separate them by commas"/>
+
+                        <input type='text'  class="inputField" id="vendNumIn" name="vendNum" placeholder="Contact Number without dashes"  />
+
+
+
+                        <label id="info">Shipping Location ** Not required</label>
+
+                        <input class='addInput' name="shipCompNam" placeholder="Shipping Company Name" id="shipCompNam" type="text" />
+
+                        <input class='addInput' name="shipAddress1" placeholder="Address Line 1" id="address-one" type="text" />
+
+                        <input class='addInput' name='shipAddress2' class="form-group" placeholder="Address Line 2"  id="address-two" type="text" />
+
+                        <input class='addInput'  name="shipCity" placeholder="city" id="city" type="text" />
+
+                        <input class='addInput'  name="shipState" placeholder="State / Province / Region" id="state" type="text" />
+
+                        <input class='addInput' name="shipZip"   placeholder="Zip / Postal Code" id="zip" type="text" maxlength="5" />
+
+                        <input class='addInput' name="shipCountry"  id="country" placeholder="Country" type="text" />
+
+                        <input name="notes" type="text" class='noteSec' placeholder="Any Notes you want to leave us?"></input>
+
+
+
+                        <div id="nxtBtn">
+                        <button type="submit"  name="next" id="formComplete"  ><span>Save</span></button>
+                        </div>
+
+                </fieldset>
+        </form>
+<%}%>
+
+
+
+<% if(purchase == 'modVend') { %>
+        <form id="msform" method="POST" action="/Modify_Vendor" >
+                <fieldset>
+                <h1 id="sectionName"><em>Modify Vendor Information</em> <br><br> </h1>
+                <% include ../messages.ejs%>
+                <h1 class="title" class="fs-title">Vendor Name</h2>
+
+                <input type="text" class="inputField" name="vendSearch" placeholder="Type Vendor Name you want to modify..." / required list="vendList">
+                <datalist id="vendList">
+                        <% for(let i =0; i < vendorName.length; i++){ %>
+                                <option value= "<%- vendorName[i] %>" >
+
+                        <% } %>
+                </datalist>
+
+
+
+
+                <div id="nxtBtn">
+
+                <button type="submit" id="btnNext" name="next" class="next action-button"  ><span>Next</span></button>
+                </div>
+                </fieldset>
+        </form>
+<%}%>
+
+
+
+
+<% if(purchase == 'vendInfoPull') { %>
+        <form id="msform" method="POST" action="/vendInfoModify">
+                <fieldset>
+
+                        <h1 class="title" class="fs-title">Specify</h1>
+                        <h5 class="form-label" ><en>Vendor Name</en></h5>
+                        <input type="text" class="inputField" id="vendNamIn" name="vendNam" placeholder="Vendor Name" readOnly value='<%=vendNam%>'/>
+
+                        <h5 class="form-label" ><en>Rep Name</en></h5>
+                        <input type="text" class="inputField" id="repNameIn" name="repName" placeholder="Rep Name" value='<%= repNam %>'/>
+
+                        <h5 for="websiteIn"  class="form-label" ><en>Company website</en></h5>
+                        <input type="text" class="inputField" id="websiteIn" name="website" placeholder="Company website" value='<%=website%>'/>
+
+
+
+                        <h5 for="vendEmailIn"  class="form-label" ><en>Vendor Email</en></h5>
+                        <input type="email" class="inputField" id="vendEmailIn" name="vendEmail" placeholder="Vendor Email" value='<%=vendEmail%>'/>
+
+                        <h5 for="vendCCIn"  class="form-label" ><en>Vendor Email : CC SEPARATE BY COMMAS</en></h5>
+                        <input type="text" class="inputField" id="vendCCIn" name="vendEmailCC" placeholder="Vendor Email CC" value='<%=vendCC%>' pattern="^[^,]\S+[^,]$" title="Please do not add spaces in between emails , separate them by commas"/>
+
+                        <h5 for="vendNumIn"   class="form-label" ><en>Contact Number</en></h5>
+                        <input type="text"   class="inputField" id="vendNumIn" name="vendNum" placeholder="Contact Number" value='<%=vendNum%>'/>
+
+                        <h5 for="shipCompNam"  class="form-label" ><en>Shipping Company Name</en></h5>
+                        <input class='addInput' name="shipCompNam" placeholder="Shipping Company Name" id="shipCompNam" type="text" value='<%=shipCompNam%>'/>
+
+                        <h5 for="address-one"  class="form-label"> <en> Address Line 1 </en> </h5>
+                        <input class='addInput' name="shipAddress1" placeholder="Address Line 1" id="address-one" type="text" value='<%=shipAddress1%>'/>
+
+                        <h5 for="address-two"  class="form-label" ><en>Address Line 2</en></h5>
+                        <input class='addInput' name='shipAddress2' class="form-group" placeholder="Address Line 2"  id="address-two" type="text" value='<%=shipAddress2%>'/>
+
+                        <h5 for="city"  class="form-label" ><en>City</en></h5>
+                        <input class='addInput'  name="shipCity" placeholder="city" id="city" type="text" value='<%= shipCity%>'/>
+
+                        <h5 for="state"  class="form-label" ><en>State</en></h5>
+                        <input class='addInput'  name="shipState" placeholder="State / Province / Region" id="state" type="text" value='<%= shipState%>'/>
+
+                        <h5 for="zip"  class="form-label" ><en>ZipCode</en></h5>
+                        <input class='addInput' name="shipZip"   placeholder="Zip / Postal Code" id="zip" type="number" min="0"   value='<%= shipZip%>'/>
+
+                        <h5 for="country"  class="form-label" ><en>Country</en></h5>
+                        <input class='addInput' name="shipCountry"  id="country" placeholder="Country" type="text" value='<%= shipCountry%>'/>
+
+                        <div class="submit">
+                                <button type="submit" id="formComplete"><span>Update Vendor </span></button>
+                        </div>
+                </fieldset>
+        </form>
+<%}%>
+<!-- TODO: add modify material -->
+
+
+
+
+<% if(purchase == 'mat_Vend_Select') { %>
+        <form id="msform" method="POST" action="/Vendor_Info_Pull" >
+                <fieldset>
+
+                <h1 id="sectionName"><em>Modify Vendor Material Information</em> <br><br> </h1>
+                <% include ../messages.ejs%>
+                <h1 class="title" class="fs-title">Vendor Name</h2>
+
+                <input type="text" class="inputField" name="vendSearch" placeholder="Type Vendor Name you want to modify..." / required list="vendList">
+                <datalist id="vendList">
+                        <% for(let i =0; i < vendorName.length; i++){ %>
+                                <option value= "<%- vendorName[i] %>" >
+
+                        <% } %>
+                </datalist>
+
+                <div class="checkLoc" class="form-group" class="glowing">
+                        <label for="checkboxArea" id="rushOrderLbl" class="form-label" ><en> Are you adding a Category to this vendor?</en></label>
+                        <p id='checkboxlook' class="onoff"><input type="checkbox" name="newCat" id="checkboxID" ><label for="checkboxID"></label></p>
+                </div>
+
+
+
+                <div id="nxtBtn">
+
+                <button type="submit" id="btnNext" name="next" class="next action-button"  ><span>Next</span></button>
+                </div>
+                </fieldset>
+        </form>
+<%}%>
+
+
+
+<% if(purchase == 'mat_Cat_Select') { %>
+        <form id="msform" method="POST" action="/Vendor_Category_Pull" >
+                <fieldset>
+                <input type="text" value="<%=vendSearch%>" name='vendSearch' class="noShow" readonly />
+                <h1 id="sectionName"><em>Modify Vendor Material Information</em> <br><br> </h1>
+                <% include ../messages.ejs%>
+                <h1 class="title" class="fs-title">Select Category You Want To Modify for: <u> <%=vendSearch%></u></h1>
+
+                <input type="text" class="inputField" name="catSearch" placeholder="Type Category Name you want to modify..."  required list="catList"/>
+                <datalist id="catList">
+                        <% for(let i =0; i < catSearch.length; i++){ %>
+                                <option value= "<%= catSearch[i] %>" >
+
+                        <% } %>
+                </datalist>
+
+
+
+
+                <div id="nxtBtn">
+
+                <button type="submit" id="btnNext" name="next" class="next action-button"  ><span>Next</span></button>
+                </div>
+                </fieldset>
+        </form>
+<%}%>
+
+<% if(purchase == 'add_Category_Vendor') { %>
+        <form id="msform" method="POST" action="/Add_Category_Vendor" >
+                <fieldset>
+                <input type="text" value="<%=vendSearch%>" name='vendSearch' class="noShow" readonly />
+                <input type="text" value="<%=catSearch%>" name='catSearch' class="noShow" readonly />
+                <h1 id="sectionName"><em>Modify Vendor Material Information</em> <br><br> </h1>
+
+                <h1 class="title" class="fs-title">Select Category To Add For <u> <%=vendSearch%> <u></h1>
+
+                <input type="text" class="inputField" name="catAddition" placeholder="Select Category You Want To Add..."  required list="catList" />
+                <datalist id="catList">
+                        <% for(let i =0; i < catSearch.length; i++){ %>
+
+                                <option value= "<%= catSearch[i] %>" >
+
+                        <% } %>
+                </datalist>
+
+
+
+
+                <div id="nxtBtn">
+
+                <button type="submit" id="btnNext" name="next" class="next action-button"  ><span>Save</span></button>
+                </div>
+                </fieldset>
+        </form>
+<%}%>
+
+
+
+
+<% if(purchase == 'mat_Vendor_Update') { %>
+        <form id="msform" method="POST" action="/Update_Material_Push" >
+                <fieldset>
+                <input type='text' class='noShow' name= 'vendSearch' value='<%=vendSearch%>' />
+                <input type='text' class='noShow' name= 'catSearch' value='<%=catSearch%>' />
+
+
+                <h1 id="sectionName"><em>Modify Vendor Material Information</em> <br><br> </h1>
+                <% include ../messages.ejs%>
+                <h3 class="title" class="fs-title">Vendor Name: <%=vendSearch%> </h1>
+                <h3 class="title" class="fs-title">Category Name: <%=catSearch%> </h1>
+
+                <h3 class='title' class='fs-title'>Material List: <h3>
+
+                <input type="text" class="noShow" name="materialListTemp" value="<%=materialListTemp%>" readonly/>
+                <textarea name="materialList" id="materialList" cols="1" rows="15" readonly ><%=materialList%></textarea>
+
+
+
+                <div id="nxtBtn">
+                <button type="button" id="btnEdit" name="edit" class="action-button"><span>Edit</span></button>
+                <button type="submit" id="btnNext" name="next" class="next action-button"><span>Save</span></button>
+                </div>
+                </fieldset>
+        </form>
+<%}%>
+
+
+
+
+
+<!-- TODO: -->
+
+<% if(purchase == 'addCat') { %>
+        <form id="msform" method="POST" action="/Add_Category" >
+                <fieldset>
+                        <h1 id="sectionName"><em>Create New Category</em> <br><br> </h1>
+                        <% include ../messages.ejs%>
+                        <h1 class="title" class="fs-title">Category Name</h2>
+
+                        <input type="text" class="inputField" name="categoryIn" placeholder="Type Category Name You Want To Add..." / required >
+
+                        <div id="nxtBtn">
+                                <button type="submit" id="btnNext" name="next" class="next action-button"  ><span>Save</span></button>
+                        </div>
+                </fieldset>
+        </form>
+<%}%>
+
+
+
+
+<% if(purchase == 'modCat') { %>
+        <form id="msform" method="POST" action="/Modify_Category" >
+                <fieldset>
+                        <h1 id="sectionName"><em>Modify Category Information</em> <br><br> </h1>
+                        <% include ../messages.ejs%>
+                        <h1 class="title" class="fs-title">Category Name</h2>
+
+                        <input type="text" class="inputField" name="catSearch" placeholder="Type recently created category to modify..." / required list="modCatList">
+                        <datalist id="modCatList">
+                        <% for(let i =0; i < docNoMat.length; i++){ %>
+                        <option value= "<%- docNoMat[i] %>" >
+                        <% } %>
+                        </datalist>
+
+
+
+
+                        <div id="nxtBtn">
+
+                <button type="submit" id="btnNext" name="next" class="next action-button"  ><span>Next</span></button>
+                </div>
+                </fieldset>
+        </form>
+<%}%>
+
+
+
+<% if(purchase == 'modCatSub') { %>
+        <form id="msform" method="POST" action="/Modify_Category_Submit" >
+                <fieldset>
+                        <h1 id="sectionName"><em>Modify Category Information</em> <br><br> </h1>
+                        <h1 class="title" class="fs-title"> Previous Category Name</h2>
+
+                        <input type="text" class="inputField" name="catSearch" value='<%=catSearch%>'  readOnly />
+
+                        <h1 class="title" class="fs-title"> New Category Name</h2>
+                        <input type="text" class="inputField" name="catChange" value='<%=catSearch%>'   />
+
+                        <div id="nxtBtn">
+
+                        <button type="submit" id="btnNext" name="next" class="next action-button"  ><span>Change</span></button>
+                        </div>
+                </fieldset>
+        </form>
+<%}%>

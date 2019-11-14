@@ -23,7 +23,7 @@ const mailOptionsReq = {
 	text: `hello world`
 }
 
-let apiKey = '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';
+
 
 sgMail.setApiKey(key.sendgridAPI);
 

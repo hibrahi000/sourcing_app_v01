@@ -29,7 +29,7 @@
 		"express-validator": "^6.2.0",
 		"jquery-html5-validity": "^1.1.2",
 		"jsonwebtoken": "^8.5.1",
-		"moment": "^2.24.0",
+		"moment": "^2.29.4",
 		"mongo": "^0.1.0",
 		"mongoose": "^5.7.10",
 		"mongoose-unique-validator": "^2.0.3",
